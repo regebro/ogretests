@@ -1,0 +1,13 @@
+name: TestBase
+plugins:
+  - .simpleplugin
+#  - ogretests.sqlite
+actions:
+  - Create Tables
+  - Create User:
+      name: Test User
+      password: secret
+  - Create Client:
+      name: Test Client
+  - Create Insurance Policy:
+      client: Test Client
