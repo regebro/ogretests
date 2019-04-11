@@ -3,7 +3,7 @@ from io import open
 
 version = '0.0.0.dev0'
 
-with open("README.rst", 'rt', encoding='UTF-8') as file:
+with open("README.md", 'rt', encoding='UTF-8') as file:
     long_description = file.read() + '\n\n'
 
 with open("CHANGES.txt", 'rt', encoding='UTF-8') as file:

@@ -10,7 +10,7 @@ so that you can easily extend and existing setup without copying all of it.
 This means you end up with layered setups, hence the reference to ogres.
 
 Once the setup is created, and all the data inserted in the database,
-the data will be dumped out to zip files called "houses".
+the data will be dumped out to tar files called "houses".
 Future invocations of the same setup will load the data from these "houses" into the database,
 bypassing the need to run the setups again, speeding up future test runs.
 
