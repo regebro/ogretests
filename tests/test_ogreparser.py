@@ -10,3 +10,4 @@ class OgrePluginTests(unittest.TestCase):
         filename = os.path.join(dirname, 'test_ogreparser.yaml')
         ogre = parse(filename)
         self.assertIn('Create Tables', ogre.commands)
+        

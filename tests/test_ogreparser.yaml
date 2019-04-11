@@ -1,7 +1,6 @@
 name: TestBase
 plugins:
   - .simpleplugin
-#  - ogretests.sqlite
 actions:
   - Create Tables
   - Create User:
@@ -10,4 +9,5 @@ actions:
   - Create Client:
       name: Test Client
   - Create Insurance Policy:
+      id: POLICY001
       client: Test Client
