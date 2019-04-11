@@ -4,9 +4,9 @@ flake:
 	flake8 ogretests tests
 
 coverage:
-	coverage run setup.py test
+	nosetests --with-coverage
 	coverage html
 	coverage report
 
 test:
-	python setup.py test
+	nosetests -s
