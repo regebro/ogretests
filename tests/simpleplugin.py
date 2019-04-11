@@ -6,6 +6,7 @@ from io import BytesIO
 
 sqlite_connection = None
 
+
 def get_connection(force_new=False):
     global sqlite_connection
     if force_new and sqlite_connection is not None:
@@ -16,6 +17,7 @@ def get_connection(force_new=False):
         sqlite_connection = sqlite3.connect(":memory:")
     return sqlite_connection
 
+
 def create_tables():
     conn = get_connection()
     conn.execute("create table user (name text, password text)")
@@ -23,20 +25,24 @@ def create_tables():
     conn.execute("create table policy (id name, client name)")
     conn.commit()
 
+
 def create_user(name, password):
     conn = get_connection()
     conn.execute("insert into user values ('%s', '%s')" % (name, password))
     conn.commit()
+
 
 def create_client(name):
     conn = get_connection()
     conn.execute("insert into client values ('%s')" % name)
     conn.commit()
 
+
 def create_policy(id, client):
     conn = get_connection()
     conn.execute("insert into policy values ('%s', '%s')" % (id, client))
     conn.commit()
+
 
 class OgrePlugin(object):
     name = 'simple'
@@ -52,7 +58,7 @@ class OgrePlugin(object):
         conn = get_connection()
         out = BytesIO()
         for line in conn.iterdump():
-                out.write(b'%s\n' % line.encode('UTF-8'))
+            out.write(b'%s\n' % line.encode('UTF-8'))
 
         yield 'database.sql', out
 
@@ -65,5 +71,6 @@ class OgrePlugin(object):
         # Reset connection
         conn = get_connection(force_new=True)
         conn.executescript(sqlstream.read())
+
 
 ogre_plugin = OgrePlugin()

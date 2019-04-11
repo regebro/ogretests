@@ -1,10 +1,9 @@
 import os
 
-from io import StringIO
 from unittest import TestCase
-from yaml import safe_load
 
 from ogretests.main import Ogre, parse
+
 
 class OgreTests(TestCase):
 

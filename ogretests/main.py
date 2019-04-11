@@ -2,15 +2,16 @@ import datetime
 import imp
 import logging
 import os
-import shutil
 import tarfile
 from collections import defaultdict
 
 
 import yaml
 
+
 class NameConflictError(NameError):
     pass
+
 
 class Ogre(object):
 
@@ -73,7 +74,7 @@ class Ogre(object):
 
         for fn in house.getnames():
             pluginname, filename = os.path.split(fn)
-            if not pluginname in self.plugins:
+            if pluginname not in self.plugins:
                 raise NameError('Plugin "%s" not found' % pluginname)
             stream = house.extractfile(fn)
             files[pluginname][filename] = stream
