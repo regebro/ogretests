@@ -1,8 +1,18 @@
+import contextlib
 import os
+import shutil
+import tempfile
 
 from unittest import TestCase
-
 from ogretests.main import Ogre, parse
+
+
+# Python 2.7 doesn't have a context manager for this, python 3.7 does
+@contextlib.contextmanager
+def temporary_directory():
+    dirname = tempfile.mkdtemp()
+    yield dirname
+    shutil.rmtree(dirname)
 
 
 class OgreTests(TestCase):
@@ -28,6 +38,9 @@ class IntegrationTests(TestCase):
         ogre = parse(filename)
 
         ogre.run()
-        # Obviously this shouldn't be hardcoded
-        ogre.dump('/tmp')
-        ogre.load('/tmp/ogrehouse-20190411-145812.tbz2')
+        with temporary_directory() as tmpdir:
+            # Obviously this shouldn't be hardcoded
+            ogre.dump(tmpdir)
+            outfile = [name for name in os.listdir(tmpdir) if name.endswith('tbz2')][0]
+            ogre.load(os.path.join(tmpdir, outfile))
+            print tmpdir

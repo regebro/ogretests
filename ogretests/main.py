@@ -101,7 +101,6 @@ class OgreParser(object):
                 modulename = modulename[1:]
                 searchpath = [directory]
             else:
-                import pdb;pdb.set_trace()
                 searchpath = None
             for name in modulename.split('.'):
                 moduleinfo = imp.find_module(name, searchpath)
