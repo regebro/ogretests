@@ -1,0 +1,10 @@
+name: TestBase
+plugins:
+  - ogretests.generic
+actions:
+  - Print:
+      text: This text should be printed to stdout
+  - Error:
+      error: This should stop the running
+  - Print:
+      text: This text should NOT be printed to stdout

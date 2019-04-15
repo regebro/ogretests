@@ -4,9 +4,8 @@ flake:
 	flake8 ogretests tests
 
 coverage:
-	nosetests --with-coverage
+	nosetests --with-coverage --cover-package=ogretests
 	coverage html
-	coverage report
 
 test:
 	nosetests -s

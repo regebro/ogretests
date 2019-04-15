@@ -92,7 +92,7 @@ class OgreParser(object):
         with open(path, 'rt') as ogrefile:
             options = yaml.safe_load(ogrefile)
 
-        directory, name = os.path.split(path)
+        directory, ignore = os.path.split(path)
         plugins = options.pop('plugins')
 
         ogre = Ogre(options)
@@ -101,9 +101,13 @@ class OgreParser(object):
                 modulename = modulename[1:]
                 searchpath = [directory]
             else:
+                import pdb;pdb.set_trace()
                 searchpath = None
-            moduleinfo = imp.find_module(modulename, searchpath)
-            module = imp.load_module(modulename, *moduleinfo)
+            for name in modulename.split('.'):
+                moduleinfo = imp.find_module(name, searchpath)
+                module = imp.load_module(name, *moduleinfo)
+                if hasattr(module, '__path__'):
+                    searchpath = module.__path__
             ogre.add_plugin(module)
 
         return ogre
