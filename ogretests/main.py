@@ -46,10 +46,13 @@ class Ogre(object):
                 method = self.commands[action_name]
                 method(**action[action_name])
             elif isinstance(action, str):
-                method = self.commands[action]
+                try:
+                    method = self.commands[action]
+                except KeyError:
+                    raise KeyError('Unknown action "%s"' % action)
                 method()
             else:
-                raise SyntaxError("Unknown action %s" % action)
+                raise SyntaxError('Unknown action type of action "%s"' % action)
 
     def dump(self, directory_path):
         dt = datetime.datetime.now()

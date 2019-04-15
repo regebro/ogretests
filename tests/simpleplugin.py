@@ -44,6 +44,11 @@ def create_policy(id, client):
     conn.commit()
 
 
+# We include this from the generic plugin so we can test conflicts
+def _print(text):
+    print(text)
+
+
 class OgrePlugin(object):
     name = 'simple'
 
@@ -52,7 +57,8 @@ class OgrePlugin(object):
         "Create User": create_user,
         "Create Client": create_client,
         "Create Insurance Policy": create_policy,
-    }
+        "Print": _print,
+   }
 
     def dump(self):
         conn = get_connection()

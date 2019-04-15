@@ -1,0 +1,7 @@
+name: TestGeneric
+plugins:
+  - ogretests.generic
+  - .simpleplugin
+actions:
+  - Print:
+      text: Something

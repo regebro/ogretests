@@ -1,4 +1,4 @@
-name: TestBase
+name: TestGeneric
 plugins:
   - ogretests.generic
 actions:

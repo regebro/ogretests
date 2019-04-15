@@ -1,0 +1,5 @@
+name: TestGeneric
+plugins:
+  - ogretests.generic
+actions:
+  - Unknown action

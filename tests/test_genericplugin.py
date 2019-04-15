@@ -4,7 +4,7 @@ import os
 import sys
 
 from unittest import TestCase
-from ogretests.main import Ogre, parse
+from ogretests.main import parse
 
 
 @contextlib.contextmanager
@@ -18,7 +18,7 @@ def redirect_stdout(target):
 class GenericTests(TestCase):
     """Running the basic example from start to end."""
 
-    def test_run(self):
+    def test_generic_plugin(self):
         dirname = os.path.split(__file__)[0]
         filename = os.path.join(dirname, 'test_genericplugin.yaml')
 
