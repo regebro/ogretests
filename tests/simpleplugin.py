@@ -58,7 +58,7 @@ class OgrePlugin(object):
         "Create Client": create_client,
         "Create Insurance Policy": create_policy,
         "Print": _print,
-   }
+    }
 
     def dump(self):
         conn = get_connection()

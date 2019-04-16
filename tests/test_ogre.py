@@ -68,10 +68,10 @@ class IntegrationTests(TestCase):
         dirname = os.path.split(__file__)[0]
         filename = os.path.join(dirname, 'test_double_plugins.yaml')
         with self.assertRaises(NameConflictError):
-            ogre = parse(filename)
+            parse(filename)
 
     def test_pluginconflict(self):
         dirname = os.path.split(__file__)[0]
         filename = os.path.join(dirname, 'test_pluginconflict.yaml')
         with self.assertRaises(NameConflictError):
-            ogre = parse(filename)
+            parse(filename)

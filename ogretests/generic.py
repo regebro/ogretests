@@ -1,4 +1,5 @@
-# Generic plugins
+# Generic commands
+
 
 def _print(text):
     print(text)
@@ -23,5 +24,6 @@ class OgrePlugin(object):
     def load(self, streams):
         # No data retained by this plugin
         pass
+
 
 ogre_plugin = OgrePlugin()
