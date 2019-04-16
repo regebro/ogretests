@@ -22,7 +22,10 @@ class GenericTests(TestCase):
         dirname = os.path.split(__file__)[0]
         filename = os.path.join(dirname, 'test_genericplugin.yaml')
 
-        out = io.BytesIO()
+        if sys.version_info[0] == 3:
+            out = io.StringIO()
+        else:
+            out = io.BytesIO()
         ogre = parse(filename)
         with redirect_stdout(out):
             with self.assertRaises(SystemExit):

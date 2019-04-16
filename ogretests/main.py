@@ -42,7 +42,7 @@ class Ogre(object):
         for action in self.actions:
             if isinstance(action, dict):
                 # Action with parameters:
-                action_name = action.keys()[0]
+                action_name = next(iter(action.keys()))
                 method = self.commands[action_name]
                 method(**action[action_name])
             elif isinstance(action, str):

@@ -76,7 +76,7 @@ class OgrePlugin(object):
 
         # Reset connection
         conn = get_connection(force_new=True)
-        conn.executescript(sqlstream.read())
+        conn.executescript(sqlstream.read().decode('UTF-8'))
 
 
 ogre_plugin = OgrePlugin()
